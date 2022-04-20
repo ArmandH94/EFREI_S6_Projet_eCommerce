@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="title p-1">{{ article.title}}</h1>
+
+        <div class="img-fluid">
+            <img width="100%" src="/assets/eCommerce/images/{{ article.image }}" alt="{{ article.title }}"/>
+        </div>
+
+        <div class="content">
+            <p class="date"> Ajouté le {{ article.createdAt | date("d/m/y") }}
+                à {{ article.createdAt | date("H:i") }}
+            par <span class="seller">{{ article.seller }}</span></p>
+            <h2 class="title">{{ article.title }}</h2>
+            <p class="content text-justify">{{ article.content | raw }}</p> <!--raw permet de convertir le html-->
+            <a href="{{ path('addCart', {'id':article.id}) }}" class=" btn btn-primary">Ajouter au panier</a>
+
+        </div>
+    </div>
+{% endblock %}
